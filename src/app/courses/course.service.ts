@@ -10,9 +10,20 @@ export class CourseService{
     retrieveAll(): Course[]{
         return COURSES;
     }
+
+    retrieveById(id:any): Course{
+        return COURSES.find((courseIteretor: Course) => courseIteretor.id == id); 
+    }
+
+    save(course:Course):void{
+        if(course.id){
+            const index = COURSES.findIndex((courseIteretor:Course) => courseIteretor.id === course.id); 
+            COURSES[index] = course;
+        }
+    }
 }
 
-var COURSES: Course[] = [
+var COURSES:any = [
     {
         id: 1,
         name: 'Angular: CLI',
